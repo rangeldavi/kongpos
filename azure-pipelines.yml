@@ -8,7 +8,7 @@ pool:
   vmImage: 'ubuntu-latest'
  
 variables:
-  ImageName: 'kongcont:$(Build.BuildId)'
+  ImageName: 'davirangel/kong:$(Build.BuildId)'
  
 stages:
 - stage: Build
@@ -17,7 +17,7 @@ stages:
   - job: Build
     displayName: Build and push Docker image
     steps:
-    - task: Docker@2
+    - task: Docker@1
       displayName: 'Build the Docker image'
       inputs:
         containerregistrytype: 'Container Registry'
@@ -29,7 +29,7 @@ stages:
         useDefaultContext: false
         buildContext: '.'
      
-    - task: Docker@2
+    - task: Docker@1
       displayName: 'Push the Docker image to Dockerhub'
       inputs:
         containerregistrytype: 'Container Registry'
