@@ -8,7 +8,7 @@ pool:
   vmImage: 'ubuntu-latest'
  
 variables:
-  ImageName: 'davirangel/kong:$(Build.BuildId)'
+  ImageName: 'davirangel/kongpos:$(Build.BuildId)'
  
 stages:
 - stage: Build
@@ -22,7 +22,6 @@ stages:
       inputs:
         containerregistrytype: 'Container Registry'
         dockerRegistryEndpoint: 'Docker Hub'
-        repository: 'davirangel/kong'
         command: 'Build an image'
         dockerFile: '**/Dockerfile'
         imageName: '$(ImageName)'
